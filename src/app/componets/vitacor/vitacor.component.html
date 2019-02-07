@@ -1,0 +1,52 @@
+
+<form #vitaform="ngForm" appnoautocomplete="" autocomplete="off" (keydown.enter)="$event.preventDefault()">
+  <table class="table table-sm table-light">
+    <tbody></tbody>
+    <tr id="formtr">
+      <input class="form-control" type="hidden" name="_id" id="_id" #_id="ngModel" [(ngModel)]="vitacorService.selectvitacor._id"/>
+      <td>
+        <input type="text" name="initDate" placeholder="Init date" #initDate="ngModel" [(ngModel)]="vitacorService.selectvitacor.initDate"/>
+      </td>
+      <td>
+        <input type="text" name="finishDate" placeholder="Finish date" #finishDate="ngModel" [(ngModel)]="vitacorService.selectvitacor.finishDate"/>
+      </td>
+      <td>
+        <input type="text" name="tasks" placeholder="Tasks"/>
+      </td>
+      <td>
+        <input type="text" name="pendingTasks" placeholder="Pending tasks"/>
+      </td>
+      <td>
+        <input type="text" name="notes" placeholder="Notes" #note="ngModel" [(ngModel)]="vitacorService.selectvitacor.note"/>
+      </td>
+      <td>
+        <input type="text" name="lid" placeholder="Lid" #lid="ngModel" [(ngModel)]="vitacorService.selectvitacor.lid"/>
+      </td>
+      <td>
+        <input type="button" value="Send" (click)="createVita(vitaform)"/>
+      </td>
+    </tr>
+  </table>
+</form>
+<table class="table table-sm table-light">
+  <thead></thead>
+  <tr>
+    <th scope="col">Init date</th>
+    <th scope="col">Finish date</th>
+    <th scope="col">Tasks</th>
+    <th scope="col">Pending task</th>
+    <th scope="col">Notes</th>
+    <th scope="col">Lid</th>
+    <th scope="col">Actions</th>
+  </tr>
+  <tbody></tbody>
+  <tr *ngFor="let vita of vitacorService.vita">
+    <th scope="row">{{vita.initDate}}</th>
+    <td>{{vita.finishDate}}</td>
+    <td>{{vita.note}}</td>
+    <td>{{vita.note}}</td>
+    <td>{{vita.note}}</td>
+    <td>{{vita.lid}}</td>
+    <td><a (click)="editVita(vita)"><i class="glyphicon glyphicon-pencil"></i></a><a (click)="deleteVita(vita._id, vitaform)"><i class="glyphicon glyphicon-trash"> </i></a></td>
+  </tr>
+</table>

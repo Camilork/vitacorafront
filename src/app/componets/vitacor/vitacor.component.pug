@@ -1,0 +1,76 @@
+form(#vitaform="ngForm",appnoautocomplete="", autocomplete="off",  (keydown.enter)="$event.preventDefault()")
+    table(class="table table-sm table-light")
+        tbody
+        tr(id="formtr")
+            input(
+                type="hidden", 
+                name="_id", 
+                class="form-control", 
+                id="_id",
+                #_id="ngModel",
+                [(ngModel)]="vitacorService.selectvitacor._id"
+            )
+            td
+                input(type="text", 
+                name="initDate", 
+                placeholder="Init date",
+                #initDate="ngModel",
+                [(ngModel)]="vitacorService.selectvitacor.initDate"
+                 )
+            td
+                input(type="text", 
+                name="finishDate", 
+                placeholder="Finish date",
+                #finishDate="ngModel",
+                [(ngModel)]="vitacorService.selectvitacor.finishDate")
+            td
+                input(type="text", 
+                name="tasks", 
+                placeholder="Tasks" )
+            td
+                input(type="text", 
+                name="pendingTasks", 
+                placeholder="Pending tasks" )
+            td
+                input(type="text", 
+                name="notes", 
+                placeholder="Notes"
+                #note="ngModel",
+                [(ngModel)]="vitacorService.selectvitacor.note" )
+            td
+                input(type="text", 
+                name="lid", 
+                placeholder="Lid"
+                #lid="ngModel",
+                [(ngModel)]="vitacorService.selectvitacor.lid" )
+            td
+                input(type="button", 
+                value="Send",
+                (click)="createVita(vitaform)")
+
+
+table(class="table table-sm table-light")
+        thead
+        tr
+            th(scope="col") Init date
+            th(scope="col") Finish date
+            th(scope="col") Tasks
+            th(scope="col") Pending task
+            th(scope="col") Notes
+            th(scope="col") Lid
+            th(scope="col") Actions
+        tbody
+        tr(*ngFor="let vita of vitacorService.vita")
+            th(scope="row") {{vita.initDate}}
+            td {{vita.finishDate}}
+            td {{vita.note}}
+            td {{vita.note}}
+            td {{vita.note}}
+            td {{vita.lid}}
+            td
+                a("(click)"="editVita(vita)")
+                    i(class="glyphicon glyphicon-pencil")
+                a((click)="deleteVita(vita._id, vitaform)")
+                    i(class="glyphicon glyphicon-trash") 
+
+
