@@ -12,12 +12,14 @@ import { Task } from '../../models/task';
   providers: [VitacorService,TaskService]
 })
 export class VitacorComponent implements OnInit {
-
-  taskui = false;
+tasks : string[][];
 
   constructor(public vitacorService : VitacorService,public taskService : TaskService) { }
 
-  ngOnInit() { this.getVita(); this.getTask()}
+  ngOnInit() { 
+    this.getVita()
+    this.getTaskCount(1)
+  }
 
   getVita(){
     this.vitacorService.getVita()
@@ -72,7 +74,7 @@ export class VitacorComponent implements OnInit {
   getTaskCount(id){
     this.taskService.getTaskCount(id)
     .subscribe(res=>{
-      console.log(res)
+      this.taskService.task = res as Task[]
     })
   }
   createTask(form?: NgForm){
