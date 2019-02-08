@@ -18,10 +18,12 @@ export class VitacorService {
     return this.http.get(this.server.server+"/vita/data")
   }
   postVita(vita: Vita){
-    return this.http.post(this.server.server+"/vita",vita);
+    return this.http.post(this.server.server+"/vita",vita)
   }
   putVita(vita: Vita){
-    return this.http.put(this.server.server+"/vita"+`/${vita._id}`,vita); 
+    return this.http.put(this.server.server+"/vita"+`/${vita._id}`,vita)
   }
-
+  deleteVita(_id: string){
+    return this.http.delete(this.server.server+"/vita"+`/${_id}`)
+  }
 }

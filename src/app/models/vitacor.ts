@@ -1,14 +1,14 @@
 export class Vita{
     constructor(_id = null){
         this._id = _id;
-        this.idVita ='';
+        this.idTasks ='';
         this.initDate ='';
         this.finishDate ='';
         this.note ='';
         this.lid ='';
     }
     _id	: string;
-    idVita : string;
+    idTasks : string;
     initDate : string;
     finishDate : string;
     note : string;

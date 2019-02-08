@@ -1,12 +1,22 @@
-table
+@mixin center()
     margin-left: auto;
     margin-right: auto;
-    width: 80%;
+#formtable
+    width: 70% !important;
+    input
+        width: auto;
+        float: right;
+        border-top: 0px;
+        border-left: 0px;
+        border-right: 0px;
+        border-bottom: 1px;
+        border-style: solid;
+table
+    +center()
+    width: 90%;
     align-content: center;
-    #formtr
-        input
-            border-top: 0px;
-            border-left: 0px;
-            border-right: 0px;
-            border-bottom: 1px;
-            border-style: solid;
+
+.pending
+    color: #FFC107;
+.finish
+    color: #28A745;
