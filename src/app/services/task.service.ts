@@ -16,7 +16,7 @@ export class TaskService {
     return this.http.get(this.server.server+"/task/data")
   }
   getTaskCount(_id : string){
-    return this.http.get(this.server.server+"/task/data"+`/${_id}`)
+    return this.http.get(this.server.server+"/task/data/count"+`/${_id}`)
   }
   postTask(task: Task){
     return this.http.post(this.server.server+"/task",task)

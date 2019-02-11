@@ -65,14 +65,14 @@ div(class="container-fluid text-center")
                         th(scope="col") Lid
                         th(scope="col") Actions
                     tbody
-                    tr(*ngFor="let vita of vitacorService.vita")
+                    tr(*ngFor="let vita of vitacorService.vita index as i")
                         th(scope="row") {{vita.idTasks}}
                         td {{vita.initDate}}
                         td {{vita.finishDate}}
-                        td 
-                            a("(click)"="getTaskCount(vita.idTasks)")
+                        td {{vita.taskCant}}
+                        td {{vita.taskFinished}}  
+                            a("(click)"="getTaskCount(vita.idTasks,i)")
                                 i(class="glyphicon glyphicon-pencil")
-                        td {{vita.note}}
                         td {{vita.note}}
                         td {{vita.lid}}
                         td
@@ -85,7 +85,8 @@ div(class="container-fluid text-center")
             form(#taskform="ngForm",
                 appnoautocomplete="", 
                 autocomplete="off",  
-                (keydown.enter)="$event.preventDefault()")
+                (keydown.enter)="$event.preventDefault()"
+                )
                 table(class="table table-sm table-light" id="tbltask")
                     tbody
                     tr(id="formtr")
@@ -142,7 +143,7 @@ div(class="container-fluid text-center")
                     td 
                         div(class="flipswitch",[ngClass]="task.status") {{task.status}} .
                             a("(click)"="editTask(task)")
-                                i(class="glyphicon glyphicon-edit",(click)="chnge(task,task.status)") 
+                                i(class="glyphicon glyphicon-edit",(click)="changeTaskStatus(task,task.status)") 
                     td
                         a("(click)"="editTask(task)")
                             i(class="glyphicon glyphicon-pencil")

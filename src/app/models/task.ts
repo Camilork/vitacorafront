@@ -4,9 +4,13 @@ export class Task{
         this.idTasks ='';
         this.task ='';
         this.status ='';
+        this.taskCant = '';
+        this.taskFinished = '';
     }
     _id	: string;
     idTasks : string;
     task : string;
     status : string;
+    taskCant : string;
+    taskFinished : string;
 }
